@@ -1,6 +1,5 @@
 body {
     background-color: #CAC6CE;
-    margin-left: 100px .5s;
     padding: 0px 10px;
 }
 
@@ -23,7 +22,7 @@ body {
 }
 
 .sidenav a {
-    padding: 30% 8px 30% 16px;
+    padding: 25px 8px 15px 16px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -35,7 +34,14 @@ body {
     color: #f1f1f1;
   }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+.main {
+  margin-left: 100px;
+}
+
+.topfunction {
+  margin-left: 100px;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
