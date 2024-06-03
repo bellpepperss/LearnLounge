@@ -1,39 +1,537 @@
 body {
-    background-color: #CAC6CE;
+  background-color: #cac6ce;
+  margin: 0;
+  padding: 0;
+  font-family: "Aoboshi One", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Sidebar styling */
 .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  background-size: auto;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: width 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidenav:hover {
+  width: 180px;
 }
 
 .sidenav a {
-    padding: 20% 8px 20% 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
+  padding: 13px 8px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  transition: color 0.3s;
+}
+
 .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Style page content */
-.main {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  color: #f1f1f1;
+}
+
+.sidenav .logo {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sidenav h3 {
+  font-size: 18px;
+  color: #cac6ce;
+  text-align: left;
+  width: 100%;
+  padding-left: 16px;
+  margin-bottom: 10px;
+}
+
+/* Adjusting the logout button */
+.sidenav a#logoutBtn {
+  font-size: 15px;
+  padding: 13px 8px;
+  color: #818181;
+  display: block;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.sidenav a#logoutBtn:hover {
+  color: #f1f1f1;
+}
+
+/* Responsive design for small screens */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
   }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+/* Top function bar */
+.topfunction {
+  margin-left: 100px;
+  padding: 20px;
+  width: calc(100% - 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d3cfd7;
+  transition: margin-left 0.5s;
+}
+
+.search-container {
+  position: relative;
+  width: 40%;
+}
+
+.search-container i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #cac6ce;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #555;
+  color: #cac6ce;
+}
+
+.topfunction .right-actions {
+  display: flex;
+  align-items: center;
+}
+
+.notif-button {
+  font-size: 20px;
+  margin-right: 50px; /* Adjust margin-right to create space on the right */
+  color: #cac6ce;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.notif-button:hover {
+  color: #111;
+}
+
+/* Additional CSS for alignment of login button and avatar */
+.topfunction .right-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this to ensure alignment */
+}
+
+.topfunction .login-button, .user-avatar {
+  font-size: 20px;
+  background-color: #6e6e6e;
+  color: #cac6ce;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+  margin-right: 50px; /* Ensure both have the same margin */
+}
+
+.topfunction .login-button:hover, .user-avatar:hover {
+  background-color: #cac6ce;
+  color: #111;
+}
+
+.user-avatar {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.user-avatar i {
+  margin-right: 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.dropdown-content .user-info {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content .user-info i {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.dropdown-content a {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a i {
+  margin-right: 10px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Content container */
+.content-container {
+  display: flex;
+  margin-left: 100px;
+  padding: 20px;
+  width: calc(100% - 100px);
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  transition: margin-left 0.5s;
+}
+
+.main {
+  flex: 2;
+}
+
+.side-section {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.breadcrumb-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-button {
+  background-color: transparent;
+  color: #555;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.breadcrumb-button:hover {
+  color: #111;
+}
+
+.breadcrumb-buttons span {
+  color: #555;
+  font-size: 1em;
+}
+
+/* Ad banner styling */
+.ad-banner {
+  height: 200px;
+  background-color: #555;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Community forum styling */
+.community-forum {
+  margin-top: 20px;
+}
+
+.btn {
+  font-size: 16px;
+  font-family: "Aoboshi One", sans-serif;
+  border-radius: 6px;
+  background-color: #6e6e6e;
+  color: #cac6ce;
+  text-align: center;
+  border: none;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.btn:hover {
+  background-color: #111111;
+  color: #cac6ce;
+}
+
+.forum-card {
+  background-color: #6e6e6e;
+  border-radius: 6px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.forum-content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  color: #cac6ce;
+}
+
+.forum-info {
+  flex-grow: 1;
+}
+
+.forum-info h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.forum-info p {
+  margin: 5px 0 0;
+  font-size: 0.9em;
+  color: #cac6ce;
+}
+
+.forum-stats {
+  text-align: center;
+  margin-left: 35px;
+}
+
+.forum-stats p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+/* Threads and Friends sections */
+.threads {
+  margin-bottom: 20px;
+}
+
+.threads h3,
+.friends-section h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.recent-thread,
+.friend {
+  padding: 10px;
+  background-color: #6e6e6e;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  color: #cac6ce;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+}
+
+.friend-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #cac6ce;
+}
+
+.friends-section {
+  background-color: #d3cfd7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Adds space between recent threads and friends */
+}
+
+.friends-section h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.friends-section h2 svg {
+  margin-right: 10px;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.friend-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #333;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #cac6ce;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-button-modal {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-button-modal:hover {
+  background-color: #555;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-login button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.google-login {
+  background-color: #4285f4;
+  color: white;
+}
+
+.discord-login {
+  background-color: #7289da;
+  color: white;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

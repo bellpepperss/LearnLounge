@@ -1,38 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="pagescript" href="script.js">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body {
+        font-family: "Aoboshi One", sans-serif;
+      }
+    </style>
     <title>Homepage</title>
 </head>
 <body>
-    <div class="sidenav">
-      <!-- collapsing side bar (cari di w3schools.com deh nanti) -->
-      <a href="#">logo</a>
-      <a href="#">logo 1</a>
-      <a href="#">logo 2</a>
-      <a href="#">logo 3</a>
-      <a href="#">logo 4</a>
-      <!-- some sort of divider -->
-      <a href="#">logo 5</a>
-      <a href="#">logo 6</a>
+    <div class="sidenav" id="sidenav">
+        <a href="#" class="logo">LOGO</a>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-fire"></i> Popular</a>
+            <div class="topics">
+                <h3>TOPICS</h3>
+                <a href="#"><i class="fas fa-code"></i> Programming</a>
+                <a href="#"><i class="fas fa-flask"></i> Science</a>
+                <a href="#"><i class="fas fa-history"></i> History</a>
+                <a href="#"><i class="fas fa-calculator"></i> Accounting</a>
+                <a href="#"><i class="fas fa-briefcase"></i> Business</a>
+                <a href="#"><i class="fas fa-square-root-alt"></i> Math</a>
+                <a href="#">see more</a>
+            </div>
+            <a href="#"><i class="fas fa-users"></i> Groups</a>
+            <a href="#"><i class="fas fa-share"></i> Share</a>
+            <a href="#"><i class="fas fa-sign-out-alt" id="logoutBtn">Log Out</i></a>
+        </nav>
     </div>
 
     <div class="topfunction">
-      <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search forums" title="Type in a category">
-      <a>notif button</a>
-      <a>login button</a>
-    </div>
-      
-    <div class="main">
-      page nav
-      <!-- content -->
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="mySearch"
+              onkeyup="myFunction()"
+              placeholder="Search forums"
+              title="Type in a category"
+            />
+        </div>
+        <div class="right-actions">
+            <a href="#" class="notif-button" id="notifBtn"><i class="fas fa-bell"></i></a>
+            <a href="#" class="login-button" id="loginBtn">Log In</a>
+            <div class="dropdown">
+                <div class="user-avatar" id="userAvatar" style="display: none;">
+                    <i class="fas fa-user"></i> <span id="userName"></span>
+                </div>
+                <div class="dropdown-content" id="dropdownMenu" style="display: none;">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <span id="dropdownUserName"></span><br>
+                            <span id="dropdownUserEmail"></span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-gem"></i> Premium</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" id="logoutLink"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="threads">
-      recent threads
+    <div class="content-container">
+        <div class="main" id="main">
+            <div class="breadcrumb-buttons">
+                <button class="breadcrumb-button" onclick="location.href='#'">Home</button>
+                <span>&gt;</span>
+                <button class="breadcrumb-button" onclick="location.href='#'">Community Forum</button>
+            </div>
+            <div class="ad-banner">
+                <p>Ad Banner (Slideshow)</p>
+            </div>
+            <div class="community-forum">
+                <h2>Community Forum</h2>
+                <button type="button" class="btn btn-secondary">All</button>
+                <button type="button" class="btn btn-secondary">Official Forum</button>
+                <button type="button" class="btn btn-secondary">Public Forum</button>
+            </div>
+
+            <div class="forum-card">
+                <div class="forum-content">
+                    <div class="forum-info">
+                        <h2>Help with Coding</h2>
+                        <p>Sub Forum <span style="color: #222222">&#9660;</span></p>
+                    </div>
+                    <div class="forum-stats">
+                        <p>3.1K</p>
+                        <p>Threads</p>
+                    </div>
+                    <div class="forum-stats">
+                        <p>100.5K</p>
+                        <p>Messages</p>
+                    </div>
+                </div>
+            </div>
+            <div class="forum-card">
+                <div class="forum-content">
+                    <div class="forum-info">
+                        <h2>Database Room</h2>
+                        <p>Sub Forum <span style="color: #222222">&#9660;</span></p>
+                    </div>
+                    <div class="forum-stats">
+                        <p>3.1K</p>
+                        <p>Threads</p>
+                    </div>
+                    <div class="forum-stats">
+                        <p>100.5K</p>
+                        <p>Messages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-section">
+            <div class="threads">
+                <h3>Recent Threads</h3>
+                <div class="recent-thread">Thread 1</div>
+                <div class="recent-thread">Thread 2</div>
+            </div>
+
+            <div class="friends-section">
+                <h2>
+                    <i class="fas fa-users"></i> Friends
+                </h2>
+                <div class="friend">
+                    <div class="friend-icon"><i class="fas fa-user"></i></div>
+                    <p>Marcus Crispy</p>
+                </div>
+                <div class="friend">
+                    <div class="friend-icon"><i class="fas fa-user"></i></div>
+                    <p>Sammy Burger</p>
+                </div>
+                <div class="friend">
+                    <div class="friend-icon"><i class="fas fa-user"></i></div>
+                    <p>Sarah Salmon</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>LOGIN</h2>
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit" class="login-button-modal">Login</button>
+                <hr>
+                <div class="social-login">
+                    <button class="google-login"><i class="fab fa-google"></i> Sign in with Google</button>
+                    <button class="discord-login"><i class="fab fa-discord"></i> Sign in with Discord</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
