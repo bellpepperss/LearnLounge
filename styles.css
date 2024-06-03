@@ -535,3 +535,14 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.forum-description {
+  margin-top: 10px;
+  background-color: #6e6e6e;
+  border-radius: 5px;
+  color: white;
+}
+
+.forum-text {
+  padding: 20px;
+}
