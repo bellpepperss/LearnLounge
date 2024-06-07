@@ -99,3 +99,65 @@ function openNav() {
     // Initial UI update
     updateUI();
 });
+
+const mainContentPost = document.getElementById("main")
+
+const createSubForumPostsContainer = () => {
+    const subForumPostsCard = document.createElement("div");
+    subForumPostsCard.classList.add("forum-card");
+
+    return subForumPostsCard;
+}
+
+const createSubForumPosts = (subForumPostsInfo) => {
+    const subForumPostsCard = document.createElement("div");
+    subForumPostsCard.classList.add("forum-card");
+
+    const subForumPostsContent = document.createElement("div");
+    subForumPostsContent.classList.add("forum-content");
+
+    const subForumPosts = document.createElement("div");
+    subForumPosts.classList.add("forum-info");
+
+    const subForumPoster = document.createElement("div");
+    subForumPoster.classList.add("user-avatar");
+    const userAvatar = document.createElement("img");
+    userAvatar.src = subForumPostsInfo.userAvatarURL;
+    subForumPoster.appendChild(userAvatar);
+    subForumPoster.textContent = subForumPostsInfo.username;
+
+    const subForumTitle = document.createElement("h2");
+    subForumTitle.textContent = subForumPostsInfo.title;
+    const subForumContent = document.createElement("p");
+    subForumContent.textContent = subForumPostsInfo.subforumContent;
+    const subForumImage = document.createElement("img");
+    subForumImage.classList.add("subforum-image")
+    subForumImage.src = subForumPostsInfo.subforumImageURL;
+
+    subForumPosts.appendChild(subForumPoster);
+    subForumPosts.appendChild(subForumTitle);
+    subForumPosts.appendChild(subForumContent);
+    subForumPosts.appendChild(subForumImage);
+
+    subForumPostsContent.appendChild(subForumPosts);
+
+    subForumPostsCard.appendChild(subForumPostsContent);
+
+    return subForumPostsCard;
+}
+
+const SubForumPosts = () => {
+    fetch("http://127.0.0.1:5500/SubForumPosts.json").then(Response => Response.json()).then(data => {
+        // const SubForumPostsContainer = createSubForumPostsContainer();
+        
+        data.forEach(subforum => {
+            const subForumPosts = createSubForumPosts(subforum);
+            mainContentPost.appendChild(subForumPosts);
+            // SubForumPostsContainer.appendChild(subForumPosts);
+        });
+        
+        // mainContentPost.appendChild(SubForumPostsContainer);
+    })
+}
+
+SubForumPosts()
